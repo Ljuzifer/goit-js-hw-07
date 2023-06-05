@@ -1,17 +1,10 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-console.log(galleryItems);
 const galleryOfImages = document.querySelector("ul.gallery");
 const imagesMarkup = createImageGallery(galleryItems);
 
 galleryOfImages.insertAdjacentHTML("beforeend", imagesMarkup);
-
-// galleryOfImages.addEventListener("click", onGalleryItemClick);
-var lightbox = new SimpleLightbox(".gallery__item a", {
-  /* options */
-  original,
-});
 
 function createImageGallery(galleryItems) {
   return galleryItems
@@ -26,13 +19,29 @@ function createImageGallery(galleryItems) {
     })
     .join("");
 }
+var lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionsDelay: 250,
+});
 
-// function onGalleryItemClick(e) {
-//   e.preventDefault();
+// ----------------- 2nd variant -----------------------
+// const imagesMarkup = galleryItems.reduce(
+//   (acc, { original, preview, description }) =>
+//     (acc += `<li>
+//   <a class="gallery__item" href="${original}">
+//     <img
+//       class="gallery__image"
+//       src="${preview}"
+//       alt="${description}"
+//     />
+//   </a>
+// </li>`),
+//   "",
+// );
 
-//   var lightbox = new SimpleLightbox(".gallery__item a", {
-//     /* options */
-//     sourceAttr: original,
-//   });
-//   console.log(lightbox);
-// }
+// galleryOfImages.insertAdjacentHTML("beforeend", imagesMarkup);
+
+// const lightbox = new SimpleLightbox(".gallery a", {
+//   captionsData: "alt",
+//   captionDelay: 250,
+// });
